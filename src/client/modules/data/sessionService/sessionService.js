@@ -1,4 +1,7 @@
 const URL = 'https://conference-lwc-app.herokuapp.com/api/sessions';
+// link to JSON data
+
+
 let sessions = [];
 export const getSessions = () => fetch(URL)
   .then(response => {
