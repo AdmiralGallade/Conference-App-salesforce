@@ -7,4 +7,11 @@ export default class SessionList extends LightningElement {
       this.sessions = this.allSessions = result;
     });
   }
+
+  handleSearchKeyInput(event) {
+    const searchKey = event.target.value.toLowerCase();
+    this.sessions = this.allSessions.filter(
+      session => session.name.toLowerCase().includes(searchKey)
+    );
+  }
 }
