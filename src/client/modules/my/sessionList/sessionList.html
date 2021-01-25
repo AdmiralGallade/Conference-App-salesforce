@@ -1,0 +1,7 @@
+<template>
+    <div class="list">
+      <template for:each={sessions} for:item="session" for:index="index">
+        <p key={session.id}>{session.name}</p>
+      </template>
+    </div>
+  </template>
