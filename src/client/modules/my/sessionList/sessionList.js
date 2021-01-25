@@ -14,4 +14,13 @@ export default class SessionList extends LightningElement {
       session => session.name.toLowerCase().includes(searchKey)
     );
   }
+  handleSessionClick(event) {
+    const index = event.currentTarget.dataset.index;
+    const navigateEvent = new CustomEvent('navigate', {
+      detail: {
+        sessionId: this.sessions[index].id
+      }
+    });
+    this.dispatchEvent(navigateEvent);
+  }
 }
