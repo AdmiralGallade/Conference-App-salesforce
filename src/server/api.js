@@ -33,8 +33,11 @@ app.use(compression());
 const HOST = process.env.API_HOST || 'localhost';
 const PORT = process.env.API_PORT || 3002;
 
-app.get('/api/v1/endpoint', (req, res) => {
-    res.json({ success: true });
+app.get('/api/sessions', (req, res) => {
+    const soql = `SELECT Id, Name, toLabel(Room__c), Description__c, format(Date_and_Time__c) formattedDateTime,
+        (SELECT Speaker__r.Id, Speaker__r.Name, Speaker__r.Description, Speaker__r.Email, Speaker__r.Picture_URL__c FROM Session_Speakers__r)
+        FROM Session__c ORDER BY Date_and_Time__c LIMIT 100`;
+    /* Salesforce connection */
 });
 
 app.listen(PORT, () =>
