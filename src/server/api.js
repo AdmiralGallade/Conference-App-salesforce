@@ -45,6 +45,32 @@ app.get('/api/sessions', (req, res) => {
             res.status(404).send('Session not found.');
         } else {
             /* Work with result data */
+
+            const formattedData = result.records.map(sessionRecord => {
+                let speakers = [];
+                if(sessionRecord.Session_Speakers__r){
+                    speakers = sessionRecord.Session_Speakers__r.records.map(
+                        record => {
+                            return {
+                                id: record.Speaker__r.Id,
+                                name: record.Speaker__r.Name,
+                                email: record.Speaker__r.Email,
+                                bio: record.Speaker__r.Description,
+                                pictureUrl: record.Speaker__r.Picture_URL__c
+                            };
+                        }
+                    );
+                }
+                return {
+                    id: sessionRecord.Id,
+                    name: sessionRecord.Name,
+                    dateTime: sessionRecord.formattedDateTime,
+                    room: sessionRecord.Room__c,
+                    description: sessionRecord.Description__c,
+                    speakers
+                };
+            });
+            res.send({ data: formattedData });
         }
     });
 });
