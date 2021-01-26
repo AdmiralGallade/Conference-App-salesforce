@@ -38,6 +38,15 @@ app.get('/api/sessions', (req, res) => {
         (SELECT Speaker__r.Id, Speaker__r.Name, Speaker__r.Description, Speaker__r.Email, Speaker__r.Picture_URL__c FROM Session_Speakers__r)
         FROM Session__c ORDER BY Date_and_Time__c LIMIT 100`;
     /* Salesforce connection */
+    conn.query(soql, (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+        } else if (result.records.length === 0) {
+            res.status(404).send('Session not found.');
+        } else {
+            /* Work with result data */
+        }
+    });
 });
 
 app.listen(PORT, () =>
