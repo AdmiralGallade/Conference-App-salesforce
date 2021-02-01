@@ -44,7 +44,7 @@ app.get('/api/sessions', (req, res) => {
         } else if (result.records.length === 0) {
             res.status(404).send('Session not found.');
         } else {
-            /* Work with result data */
+            /* Working with result data */
 
             const formattedData = result.records.map(sessionRecord => {
                 let speakers = [];
