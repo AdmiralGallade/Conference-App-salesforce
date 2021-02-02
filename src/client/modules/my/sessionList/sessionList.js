@@ -2,6 +2,7 @@ import { LightningElement } from 'lwc';
 import { getSessions } from 'data/sessionService';
 export default class SessionList extends LightningElement {
   sessions = [];
+  f1=false;
   connectedCallback() {
     getSessions().then(result => {
       this.sessions = this.allSessions = result;
@@ -23,5 +24,12 @@ export default class SessionList extends LightningElement {
       }
     });
     this.dispatchEvent(navigateEvent);
+  }
+
+  handleCheckMarkInput(event) {
+    this.f1= !this.f1;
+    const value1= event.currentTarget.value;
+    console.log("checkbox value",this.f1);
+    
   }
 }

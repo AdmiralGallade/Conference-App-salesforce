@@ -17,6 +17,14 @@
     border-left: 3px solid #0277bd;
     border-radius: 0 0.5rem 0.5rem 0;
   }
+  .checkbox{
+    float:right;
+    color:#0277bd;
+    direction:rtl;
+    align-items: flex-end;
+
+  }
+ 
   .session:hover {
     background-color: #e1f5fe;
     cursor: pointer;

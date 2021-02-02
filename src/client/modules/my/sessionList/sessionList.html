@@ -1,6 +1,14 @@
 <template>
     <div class="list">
         <input type="search" placeholder="Search sessions..." oninput={handleSearchKeyInput} />
+
+        <div class="checkbox">
+          <input  type="checkbox"  oninput={handleCheckMarkInput}><div style="margin-top: -17px;margin-left:-50px;">
+            Checkbox
+       </div>
+      </div>
+      
+
       <template for:each={sessions} for:item="session" for:index="index">
         <a key={session.id} class="session" data-index={index} onclick={handleSessionClick}>
             <div>
