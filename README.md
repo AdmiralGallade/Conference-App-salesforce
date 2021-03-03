@@ -1,6 +1,6 @@
 # conference-app
 
-Here will be some information about the app.
+Lists conferences from a JSON format
 
 ## How to start?
 
